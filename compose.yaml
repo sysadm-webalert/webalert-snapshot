@@ -1,0 +1,16 @@
+services:
+  webalert-puppeteer:
+    container_name: webalert-puppeteer
+    image: webalert:puppeteer
+    build:
+      context: .
+    init: true
+    ports:
+      - "3000:3000"
+    networks:
+      - webalert-network
+
+networks:
+  webalert-network:
+    name: webalert-network
+    external: true
