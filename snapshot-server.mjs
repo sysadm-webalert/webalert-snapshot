@@ -3,6 +3,7 @@ import express from 'express';
 
 const app = express();
 const port = 3000;
+app.disable('x-powered-by');
 
 // Launch Puppeteer
 let browser;
@@ -11,7 +12,7 @@ let browser;
   try {
     browser = await puppeteer.launch({
       headless: true,
-      args: ['--single-process', '--no-zygote', '--no-sandbox', '--disable-setuid-sandbox'], // Config to recude resources
+      args: ['--single-process', '--no-zygote', '--no-sandbox', '--disable-setuid-sandbox'], // Config to reduce resources consumption
     });
     console.log('Browser instance launched');
   } catch (error) {
